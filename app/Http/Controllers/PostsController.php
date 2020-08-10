@@ -36,6 +36,7 @@ class PostsController extends Controller
 
         // $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(5);
         $posts = Post::whereIn('user_id', $users)->with('user')->latest()->paginate(10)->getCollection()->shuffle();
+        // dd($posts);
 
         return view('posts.index', compact('posts', 'sugg_users'));
     }

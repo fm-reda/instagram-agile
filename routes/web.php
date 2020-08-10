@@ -22,6 +22,10 @@ Route::resource('comments', 'CommentController');
 Route::get('/', 'PostsController@index')->name('post.index');
 
 Route::get('/p/create', 'PostsController@create')->name('post.create');
+// Route::post('/like/{post}', 'LikeController@updatelikes')->name('like.update'); //  This need more time
+
+Route::post('like/{like}', 'LikeController@update2')->name('like.create');
+
 
 Route::post('/p', 'PostsController@store')->name('post.store');
 
@@ -42,3 +46,8 @@ Route::any('/search', 'ProfilesController@search')->name('profile.search'); // S
 
 // Follow Route
 Route::post('/follow/{user}', 'FollowsController@store');
+
+Route::resources([
+    'likes' => 'LikeController',
+
+]);

@@ -37,11 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function boot(){
+    protected static function boot()
+    {
 
         parent::boot();
 
-        static::created(function ($user){
+        static::created(function ($user) {
             $user->profile()->create([
                 // 'image' => '/profile/default.png',
 
@@ -75,5 +76,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
-
+    public function likes()
+    {
+        return $this->hasMany('App\Like');
+    }
 }

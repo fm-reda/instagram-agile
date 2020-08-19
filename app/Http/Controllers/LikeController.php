@@ -78,8 +78,7 @@ class LikeController extends Controller
     }
     public function update2($id)
     {
-        // $id = 1;
-        // dd(Auth::User());
+       
         $user = Auth::User();
 
         $like = Like::where('user_id', $user->id)->where('post_id', $id)->first();
@@ -87,9 +86,7 @@ class LikeController extends Controller
         if ($like) {
             $like->State = !$like->State;
             $like->save();
-            // dd($like);
-            // dd($like);
-            // dd($like);
+
         } else {
             $like = Like::create([
                 "user_id" => $user->id,
@@ -97,13 +94,11 @@ class LikeController extends Controller
                 "State" => true
 
             ]);
-            // dd($like);
-
-            // dd('Not found');
+     
         }
         return Redirect::to('/');
 
-        // dd($like);
+     
     }
 
 

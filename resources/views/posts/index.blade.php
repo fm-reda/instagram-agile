@@ -24,10 +24,38 @@
                             {{ $post->user->name }}
                         </a>
                     </div>
-                    <div class="">
+                    {{-- <div class="">
                         <a href="#" class="text-muted ">
                             <i class="fas fa-ellipsis-h"></i>
                         </a>
+                    </div> --}}
+                    <div class="card-dots">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-link text-muted " data-toggle="modal"
+                            data-target="#unique{{$loop->iteration}}">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="unique{{$loop->iteration}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                <div class="modal-content">
+                                    <ul class="list-group">
+                                        <a href="#">
+                                            <li class="btn list-group-item">Unfollow</li>
+                                        </a>
+                                        <a href="/p/{{ $post->id }}">
+                                            <li class="btn list-group-item">Go to post</li>
+                                        </a>
+                                        <a href="#">
+                                            <li class="btn list-group-item" data-dismiss="modal">Cancel</li>
+                                        </a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- fin --}}
                     </div>
                 </div>
 
@@ -138,20 +166,21 @@
                             {{-- @endif --}}
 
                             {{-- Post Caption --}}
-                            <p class="card-text">
+                            <p class="card-text text20">
                                 <a href="/profile/{{$post->user->username}}"
                                     class="my-0 text-dark text-decoration-none">
-                                    <strong>{{ $post->user->name }}</strong>
+                                    {{-- <strong>{{ $post->user->name }}</strong> --}}
                                 </a>
                                 {{ $post->caption }}
                             </p>
 
                             <!-- Comment -->
                             <div class="comments">
-                                @foreach ($post->comments as $comment)
-                                @if ($loop->iteration > 2)
+                                @foreach (App\comment::where('post_id',$post->id)->take(2)->orderBy('id','DESC')->get()
+                                as $comment)
+                                {{-- @if ($loop->iteration > 2)
                                 @break
-                                @endif
+                                @endif --}}
                                 <p class="mb-1"><strong>{{ $comment->user->name }}</strong> {{ $comment->body }}</p>
                                 @endforeach
                             </div>
@@ -199,7 +228,7 @@
                     {{-- <img src="{{asset('img/nopost.png')}}" class="card-img-top" alt="..." style="max-width: 330px">
                     --}}
                     <div class="card-body ">
-                        <h3>No result Found</h3>
+                        <h3>No post found</h3>
                         {{-- <p class="card-text text-muted">We couldn't find any post, Try to follow someone</p> --}}
                     </div>
                 </div>

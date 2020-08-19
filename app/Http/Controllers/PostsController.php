@@ -28,6 +28,12 @@ class PostsController extends Controller
         //     $users[] = User::find($profile->user_id);
         // }
         // $posts = Post::whereIn('user_id', $users)->latest()->get();
+        // array_push($users->toArray(), Auth::User()->id);
+        // dd(gettype($users));
+        $users->push(Auth::User()->id);
+        // dd($users);
+
+
 
         $sugg_users = User::all()->reject(function ($user) {
             $users = auth()->user()->following()->pluck('profiles.user_id')->toArray();

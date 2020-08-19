@@ -79,3 +79,11 @@ textarea {
 .text14 {
     font-size: 14px;
 }
+.text20 {
+    font-size: 20px;
+}
+
+/* padding */
+.p-t-80 {
+    padding-top: 80px;
+}

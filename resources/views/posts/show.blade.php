@@ -62,8 +62,7 @@
                                 <div class="col-2">
                                     <a href="/profile/{{$comment->user->username}}">
                                         <img src="{{ asset($comment->user->profile->getProfileImage()) }}"
-                                        {{-- {{dd($post)}} --}}
-                                        class="rounded-circle w-100">
+                                            {{-- {{dd($post)}} --}} class="rounded-circle w-100">
                                     </a>
                                 </div>
                                 <div class="col-10 pl-0">
@@ -111,6 +110,8 @@
                                 <div class="form-group mb-0 text-muted">
                                     <div class="input-group is-invalid">
                                         <input type="hidden" name="post_id" value="{{$post->id}}">
+                                        <input type="hidden" name="redirect" value="test">
+
                                         <textarea class="form-control py-2 px-3" id="body" name='body' rows="1"
                                             placeholder="Add a comment..."></textarea>
                                         <div class="input-group-append">

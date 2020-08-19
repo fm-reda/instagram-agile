@@ -75,11 +75,11 @@
                                 <i class="far fa-compass fa-2x"></i>
                             </a>
                         </li>
-                        <li class="nav-item px-2 ">
+                        {{-- <li class="nav-item px-2 ">
                             <a class="nav-link" href="#">
                                 <i class="far fa-heart fa-2x"></i>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item px-2">
                             <a href="/profile/{{Auth::user()->username}}" class="nav-link"
                                 style="width: 42px; height: 32px; padding-top: 6px;margin-right:-10px">
